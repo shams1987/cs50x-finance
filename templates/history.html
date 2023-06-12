@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Transaction Time</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for trans in trans_history %}
+            <tr>
+                <td>{{ trans["symbol"] }}</td>
+                <td>{{ trans["shares"] }}</td>
+                <td>{{ usd(trans["price"]) }}</td>
+                <td>{{ trans["time"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
